@@ -18,7 +18,7 @@ export default function ErrorMessage({
   return (
     <div>
       <Toaster position={position} reverseOrder={false} />
-      <div className="error-message">{message}</div> {"Error"}
+      <div className="error-message">{message}</div> {}
     </div>
   );
 }

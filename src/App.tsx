@@ -22,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     if (searchQuery.trim() === "") {
-      setIsError("Search query cannot be empty");
+      setIsError("");
       return;
     }
 
