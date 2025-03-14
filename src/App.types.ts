@@ -17,7 +17,7 @@ export type AppState = {
   page: number;
   searchQuery: string;
   modalIsOpen: boolean;
-  selectedImage: string;
+  selectedImage: Image | null;
   totalPage: number;
 };
 
@@ -27,19 +27,9 @@ export type SearchBarProps = {
 
 export type ImageGalleryProps = {
   items: Image[];
-  onClick: (item: string) => void;
+  onClick: (item: Image) => void;
 };
 
 export type ImageModalProps = {
-  item: string;
-  onClose: () => void;
-  isOpen: boolean;
-};
-
-export type LoadMoreBtnProps = {
-  onClick: () => void;
-};
-
-export type ErrorMessageProps = {
-  message: string;
-};
+  item: Image | null;
+}

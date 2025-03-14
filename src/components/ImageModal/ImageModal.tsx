@@ -38,7 +38,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ item, isOpen, onClose }) => {
       onRequestClose={onClose}
     >
       <img className={s.modalImage} src={urls.regular} alt={alt_description} />
-      <p>Author: {user.username}</p>
+      <p>Author: {user?.name}</p>
     </Modal>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getImages } from "./images-api";
-import {Image} from "./App.types";
+import { Image } from "./App.types";
 import "./App.css";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ImageModal from "./components/ImageModal/ImageModal";
@@ -10,15 +10,6 @@ import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import scrollOnLoad from "./components/Scroll/Scroll";
 
-type Image = {
-  id: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-  alt_description: string;
-};
-
 export default function App() {
   const [images, setImages] = useState<Image[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,7 +17,7 @@ export default function App() {
   const [page, setPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
   const [totalPage, setTotalPage] = useState<number>(0);
 
   useEffect(() => {
@@ -66,14 +57,14 @@ export default function App() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (item: string) => {
+  const openModal = (item: Image) => {
     setSelectedImage(item);
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setSelectedImage("");
+    setSelectedImage(null);
   };
 
   return (
